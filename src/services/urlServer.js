@@ -1,0 +1,1 @@
+export const serverURL = 'https://dental-clinic-server-2.onrender.com'

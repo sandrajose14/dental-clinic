@@ -1,0 +1,28 @@
+.crd{
+    background-color:white;
+    opacity: .8;
+    transition: transform 0.3s;
+    border: solid 1px white;
+}
+.crd:hover{
+    transform: scale(1.1);
+    opacity: 1;
+}
+/* Homee.css */
+
+/* Add your existing styles here */
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+    /* Adjust padding for the about section */
+    #about-section {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  
+    /* Adjust margin for the service section */
+    .service-section {
+      margin-top: 20rem;
+    }
+  }
+  

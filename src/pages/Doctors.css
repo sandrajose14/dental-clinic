@@ -1,0 +1,7 @@
+.box4 {
+    transition: transform 0.3s ease;
+}
+
+.box4:hover {
+    transform: scale(1.10);
+}

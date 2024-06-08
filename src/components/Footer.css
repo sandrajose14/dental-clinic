@@ -1,0 +1,27 @@
+.brand {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.description {
+    color: #fff;
+}
+
+.icon {
+    color: #74C0FC;
+}
+
+.social-icon {
+    
+    color: white;
+
+}
+.social-links a:hover {
+    color: blue;
+}
+
+
+.list-unstyled li {
+    margin-bottom: 10px;
+}
