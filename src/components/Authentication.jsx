@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import './Authentication.css';
 import { RegisterApi, loginApi } from '../services/callApi';
-
+import { Link } from 'react-router-dom';
 function Authentication({ setIsLoggedIn, setUserEmail }) {
   const [register, setRegister] = useState({
     userName: '',
@@ -153,9 +153,13 @@ function Authentication({ setIsLoggedIn, setUserEmail }) {
                 onChange={e => setRegister({ ...register, userPassword: e.target.value })}
               />
             </div>
-            <button type="button" onClick={handleRegister} className="btn">
-              Sign Up
-            </button>
+           
+             <Link to={'/login'}>
+                <button type="button" onClick={handleRegister} className="btn">
+                  Sign Up
+                </button>
+             </Link>
+           
             <p className="social-text loginp">Or Sign up with social platforms</p>
             <div className="social-media">
               <a href="#" className="social-icon">
