@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Homee from './pages/Homee';
+import Homee from '../src/pages/Homee';
 import Treatment from './pages/Treatment';
 import Doctor from './pages/Doctors';
 import Testimonial from './pages/Testimonial';
@@ -39,10 +39,19 @@ function App() {
         />
         <Route
           path='/register'
-          element={<Authentication setIsLoggedIn={setIsLoggedIn} setUserEmail={setUserEmail} register />}
+          element={<Authentication setIsLoggedIn={setIsLoggedIn} setUserEmail={setUserEmail} />}
         />
-        <Route path='/viewbooking' element={isLoggedIn ? <ViewBooking userEmail={userEmail} /> : <Navigate to='/login' />} />
-        <Route path='/profile' element={isLoggedIn ? <Profile /> : <Navigate to='/login' />} />
+        {isLoggedIn ? (
+          <>
+            <Route path='/viewbooking' element={<ViewBooking userEmail={userEmail} />} />
+            <Route path='/profile' element={<Profile />} />
+          </>
+        ) : (
+          <>
+            <Route path='/viewbooking' element={<Navigate to='/login' />} />
+            <Route path='/profile' element={<Navigate to='/login' />} />
+          </>
+        )}
       </Routes>
       <Footer />
     </>
