@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import './Authentication.css';
 import { RegisterApi, loginApi } from '../services/callApi';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Authentication({ setIsLoggedIn, setUserEmail }) {
   const [register, setRegister] = useState({
@@ -200,7 +200,7 @@ function Authentication({ setIsLoggedIn, setUserEmail }) {
           </div>
           <img
             src="https://i.pinimg.com/originals/99/1e/1c/991e1cc50b7a0173ef3bb5f3e673dad8.png"
-          className="image"
+            className="image"
             alt=""
           />
         </div>

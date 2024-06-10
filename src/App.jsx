@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Homee from '../src/pages/Homee';
+import Homee from './pages/Homee';
 import Treatment from './pages/Treatment';
 import Doctor from './pages/Doctors';
 import Testimonial from './pages/Testimonial';
@@ -31,7 +31,6 @@ function App() {
         <Route path='/' element={<Homee />} />
         <Route path='/treatment' element={<Treatment />} />
         <Route path='/treatment/doctor/:treatmentName' element={<Doctor />} />
-       
         <Route path='/feedback' element={<Testimonial />} />
         <Route path='/contact' element={<Contactus />} />
         <Route
@@ -42,18 +41,8 @@ function App() {
           path='/register'
           element={<Authentication setIsLoggedIn={setIsLoggedIn} setUserEmail={setUserEmail} register />}
         />
-        {isLoggedIn && (
-          <>
-            <Route path='/viewbooking' element={<ViewBooking userEmail={userEmail} />} />
-            <Route path='/profile' element={<Profile />} />
-          </>
-        )}
-        {!isLoggedIn && (
-          <>
-            <Route path='/viewbooking' element={<Navigate to='/login' />} />
-            <Route path='/profile' element={<Navigate to='/login' />} />
-          </>
-        )}
+        <Route path='/viewbooking' element={isLoggedIn ? <ViewBooking userEmail={userEmail} /> : <Navigate to='/login' />} />
+        <Route path='/profile' element={isLoggedIn ? <Profile /> : <Navigate to='/login' />} />
       </Routes>
       <Footer />
     </>
