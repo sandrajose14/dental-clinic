@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import './Authentication.css';
 import { RegisterApi, loginApi } from '../services/callApi';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
 function Authentication({ setIsLoggedIn, setUserEmail }) {
   const [register, setRegister] = useState({
     userName: '',
@@ -27,6 +28,8 @@ function Authentication({ setIsLoggedIn, setUserEmail }) {
     return passwordValid.test(password);
   };
 
+  const navigate = useNavigate();
+
   const handleRegister = async () => {
     const { userName, userEmail, userPassword } = register;
     if (!userName || !userEmail || !userPassword) {
@@ -40,7 +43,7 @@ function Authentication({ setIsLoggedIn, setUserEmail }) {
         const response = await RegisterApi(register);
         if (response.status >= 200 && response.status < 300) {
           alert('Profile created successfully');
-          window.location.href = '/login'; // Navigate to the login page
+          navigate('/login'); // Navigate to the login page
         } else {
           alert('Something went wrong');
         }
@@ -72,7 +75,7 @@ function Authentication({ setIsLoggedIn, setUserEmail }) {
           setUserEmail(userEmail);
           sessionStorage.setItem('isLoggedIn', true); // Store login state in sessionStorage
           sessionStorage.setItem('userEmail', userEmail); // Store user email in sessionStorage
-          window.location.href = '/';
+          navigate('/'); // Navigate to the home page
         } else {
           alert('Invalid credentials');
         }
@@ -153,13 +156,9 @@ function Authentication({ setIsLoggedIn, setUserEmail }) {
                 onChange={e => setRegister({ ...register, userPassword: e.target.value })}
               />
             </div>
-           
-             <Link to={'/login'}>
-                <button type="button" onClick={handleRegister} className="btn">
-                  Sign Up
-                </button>
-             </Link>
-           
+            <button type="button" onClick={handleRegister} className="btn">
+              Sign Up
+            </button>
             <p className="social-text loginp">Or Sign up with social platforms</p>
             <div className="social-media">
               <a href="#" className="social-icon">
@@ -201,7 +200,7 @@ function Authentication({ setIsLoggedIn, setUserEmail }) {
           </div>
           <img
             src="https://i.pinimg.com/originals/99/1e/1c/991e1cc50b7a0173ef3bb5f3e673dad8.png"
-            className="image"
+          className="image"
             alt=""
           />
         </div>
